@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  web:
+     build: ./frontend
+     ports: 
+      - 8000:4200
+     environment:
+      DB_URL: mongodb+srv://habib1234:habib1234@cluster0.zvebs.mongodb.net/eCommerce?retryWrites=true&w=majority
+  api:
+     build: ./backend
+     ports:
+      - 80:3000
+  db:
+     image: mongo:4.4.6
+     ports:
+      - 27017:27017
+     volumes:
+      - miniProjet:/data/db
+
+volumes:
+  miniProjet:
